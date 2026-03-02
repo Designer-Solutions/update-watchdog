@@ -5,7 +5,8 @@
 **Tested up to:** WordPress 6.9
 **Requires PHP:** 7.0
 **Stable tag:** 1.0.0
-**License:** [GPL-2.0-or-later](https://www.gnu.org/licenses/gpl-2.0.html)
+**License:** GPL-2.0-or-later
+**License URI:** https://www.gnu.org/licenses/gpl-2.0.html
 
 Monitors the availability of updates for WordPress plugins, themes, and core via an admin panel and a Bearer-token-secured REST API.
 
