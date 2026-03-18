@@ -58,11 +58,11 @@ No. All update checks use WordPress's built-in functions (`wp_update_plugins`, `
 
 **How is the API token stored?**
 
-The token is stored as a WordPress option (`wp_watchdog_token`) in your site's database. It is never transmitted or logged by the plugin itself.
+The token is stored as a WordPress option (`updawa_token`) in your site's database. It is never transmitted or logged by the plugin itself.
 
 **What happens to my data when I delete the plugin?**
 
-The plugin registers an uninstall routine that removes the `wp_watchdog_token` option from the database when the plugin is deleted through the WordPress admin.
+The plugin registers an uninstall routine that removes the `updawa_token` option from the database when the plugin is deleted through the WordPress admin.
 
 **Can I use the REST API from a remote monitoring system?**
 

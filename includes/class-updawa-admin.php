@@ -22,8 +22,8 @@ class Updawa_Admin {
 
 	public function init() {
 		add_action( 'admin_menu', array( $this, 'register_menu' ) );
-		add_action( 'admin_post_update_watchdog_regenerate_token', array( $this, 'handle_regenerate_token' ) );
-		add_action( 'admin_post_update_watchdog_refresh', array( $this, 'handle_refresh' ) );
+		add_action( 'admin_post_updawa_regenerate_token', array( $this, 'handle_regenerate_token' ) );
+		add_action( 'admin_post_updawa_refresh', array( $this, 'handle_refresh' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
 
@@ -123,8 +123,8 @@ class Updawa_Admin {
 		</p>
 
 		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-			<?php wp_nonce_field( 'update_watchdog_refresh', 'update_watchdog_refresh_nonce' ); ?>
-			<input type="hidden" name="action" value="update_watchdog_refresh">
+			<?php wp_nonce_field( 'updawa_refresh', 'updawa_refresh_nonce' ); ?>
+			<input type="hidden" name="action" value="updawa_refresh">
 			<input type="hidden" name="return_tab" value="table">
 			<p>
 				<button type="submit" class="button button-secondary">
@@ -241,8 +241,8 @@ class Updawa_Admin {
 		</p>
 
 		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-			<?php wp_nonce_field( 'update_watchdog_refresh', 'update_watchdog_refresh_nonce' ); ?>
-			<input type="hidden" name="action" value="update_watchdog_refresh">
+			<?php wp_nonce_field( 'updawa_refresh', 'updawa_refresh_nonce' ); ?>
+			<input type="hidden" name="action" value="updawa_refresh">
 			<input type="hidden" name="return_tab" value="json">
 			<p>
 				<button type="submit" class="button button-secondary">
@@ -308,8 +308,8 @@ class Updawa_Admin {
 		</table>
 
 		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-			<?php wp_nonce_field( 'update_watchdog_regenerate_token', 'update_watchdog_regenerate_nonce' ); ?>
-			<input type="hidden" name="action" value="update_watchdog_regenerate_token">
+			<?php wp_nonce_field( 'updawa_regenerate_token', 'updawa_regenerate_nonce' ); ?>
+			<input type="hidden" name="action" value="updawa_regenerate_token">
 			<p>
 				<button type="submit"
 				        class="button button-secondary"
@@ -352,7 +352,7 @@ class Updawa_Admin {
 			wp_die( esc_html__( 'You do not have sufficient permissions.', 'update-watchdog' ) );
 		}
 
-		check_admin_referer( 'update_watchdog_regenerate_token', 'update_watchdog_regenerate_nonce' );
+		check_admin_referer( 'updawa_regenerate_token', 'updawa_regenerate_nonce' );
 
 		$token = $this->generate_token();
 		update_option( self::TOKEN_OPTION, $token );
@@ -369,7 +369,7 @@ class Updawa_Admin {
 			wp_die( esc_html__( 'You do not have sufficient permissions.', 'update-watchdog' ) );
 		}
 
-		check_admin_referer( 'update_watchdog_refresh', 'update_watchdog_refresh_nonce' );
+		check_admin_referer( 'updawa_refresh', 'updawa_refresh_nonce' );
 
 		$this->updater->force_refresh();
 

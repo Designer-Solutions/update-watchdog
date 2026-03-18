@@ -10,4 +10,4 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-delete_option( 'update_watchdog_token' );
+delete_option( 'updawa_token' );
